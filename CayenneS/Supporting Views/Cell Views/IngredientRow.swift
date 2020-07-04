@@ -1,8 +1,8 @@
 //
-//  IngredientCell.swift
+//  IngredientRow.swift
 //  CayenneS
 //
-//  Created by Wellington Johnson on 6/27/20.
+//  Created by Wellington Johnson on 7/4/20.
 //  Copyright © 2020 Wellington Johnson. All rights reserved.
 //
 
@@ -14,8 +14,8 @@ struct IngredientRow: View {
     }
 }
 
-struct IngredientCell_Previews: PreviewProvider {
+struct IngredientRow_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientRow().previewLayout(.fixed(width: 300, height: 70))
+        IngredientRow()
     }
 }
