@@ -10,70 +10,73 @@ import SwiftUI
 
 struct CreateARecipeView: View {
     
-    @State private var recipeName: String = ""
-    @State private var recipeDescription = ""
-    @State private var prepTime: String = ""
-    @State private var cookTime: String = ""
-    @State private var ingredients: Int32 = 0
-    @State private var servings: Int32 = 0
-    @State private var includeInstructions: Bool = false
+    static let DefaultRecipeName = "Tasty Meal"
+    static let DefaultRecipeDescription = "Tasty meal made easy!"
+    static let DefaultPrepTime = "5"
+    static let DefaultCookTime = "5"
+    static let DefaultServing = "1"
     
+    @State var recipeName: String = ""
+    @State var recipeDescription: String = ""
+    @State var prepTime: String = ""
+    @State var cookTime: String = ""
+    @State var servings: String = ""
+    let onComplete: (String, String, String, String, String) -> Void
     
     var body: some View {
         NavigationView {
-            
             VStack{
                 Form {
-                    
-                    Section(header: Text("Recipe Name"))
+                    Section(header: Text("Recipe Name").font(.headline))
                     {
                         TextField("Name of recipe", text: $recipeName)
                     }
                     
-                    Section(header: Text("Recipe Description"))
+                    Section(header: Text("Recipe Description").font(.headline))
                     {
                         TextField("Short recipe description", text: $recipeDescription)
                     }
                     
-                    Section(header: Text("Cook and Prep Time"))
+                    Section(header: Text("Prep Time").font(.headline))
                     {
-                        TextField("Prep Time", text: $prepTime)
-                        TextField("Cook Time", text: $cookTime)
+                        TextField("Prep Time", text: $prepTime).keyboardType(.numberPad)
                     }
                     
-                    Section(header: Text("Ingredients"))
+                    Section(header: Text("Cook Time").font(.headline))
                     {
-                        Stepper("\(ingredients)", value: $ingredients, in: 1...20)
+                        TextField("Cook Time", text: $cookTime).keyboardType(.numberPad)
                     }
                     
-                    Section(header: Text("Servings"))
+                    Section(header: Text("Servings").font(.headline))
                     {
-                        Stepper("\(servings)", value: $servings, in: 1...20)
+                        TextField("Cook Time", text: $servings).keyboardType(.numberPad)
                     }
                     
-                    Toggle(isOn: $includeInstructions)
-                    {
-                        Text("Include Instructions?")
+                }
+                Button(action: addRecipeAction ) {
+                    HStack{
+                        Text("Create")
+                            .font(.title)
+                            .frame(height: 60)
+                        Image(systemName: "chevron.right.circle")
+                            .font(.title)
+                            .frame(height: 60)
                     }
                 }
-               
-                NavigationLink(destination: AddIngredientsView(ingredients: Int(ingredients),includeInstructions: includeInstructions)) {
-                    Text("Add Ingredients")
-                        .font(.headline)
-                        .frame(height: 60)
-                        Image(systemName: "chevron.right.circle").font(.title)
-                        .frame(height: 60)
-                }
-                
             }
-            .navigationBarTitle("Create a recipe")
-            
+            .navigationBarTitle("Add Recipe")
         }
     }
-}
-
-struct CreateARecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateARecipeView()
+    
+    private func addRecipeAction(){
+        onComplete(
+            recipeName.isEmpty ? CreateARecipeView.DefaultRecipeName : recipeName,
+            recipeDescription.isEmpty ? CreateARecipeView.DefaultRecipeDescription : recipeDescription,
+            prepTime.isEmpty ? CreateARecipeView.DefaultPrepTime : recipeDescription,
+            cookTime.isEmpty ? CreateARecipeView.DefaultCookTime : recipeDescription,
+            servings.isEmpty ? CreateARecipeView.DefaultServing : recipeDescription
+             )
+         }
     }
-}
+
+

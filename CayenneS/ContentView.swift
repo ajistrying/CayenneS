@@ -16,11 +16,6 @@ struct ContentView: View {
                     Image(systemName: "r.circle")
                     Text("Recipes")
             }
-            CreateARecipeView()
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Create Recipe")
-            }
             CookbookListView()
                 .tabItem {
                     Image(systemName: "book")

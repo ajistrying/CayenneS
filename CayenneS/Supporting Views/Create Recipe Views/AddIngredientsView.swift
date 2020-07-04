@@ -11,16 +11,17 @@ import SwiftUI
 struct AddIngredientsView: View {
     var ingredients: Int
     var includeInstructions: Bool
+    @State var ingredientList: [String] = []
     
     var body: some View {
         NavigationView {
-            Text(String(ingredients))
-            if includeInstructions {
-                Text("Hello World")
+            List{
+                Text("Hi")
+                Text("Hi")
+                Text("Hi")
             }
-         
         }
-    .navigationBarTitle(Text("Add Ingredients"))
+        .navigationBarTitle(Text("Add Ingredients"))
     }
 }
 
