@@ -29,27 +29,44 @@ struct CreateARecipeView: View {
                 Form {
                     Section(header: Text("Recipe Name").font(.headline))
                     {
-                        TextField("Name of recipe", text: $recipeName)
+                        HStack{
+                            TextField("Name of recipe", text: $recipeName)
+                            Button("Done"){UIApplication.shared.endEditing()}
+                        }
+                        
                     }
                     
                     Section(header: Text("Recipe Description").font(.headline))
                     {
-                        TextField("Short recipe description", text: $recipeDescription)
+                        
+                        HStack{
+                            TextField("Short recipe description", text: $recipeDescription)
+                            Button("Done"){UIApplication.shared.endEditing()}
+                        }
                     }
                     
-                    Section(header: Text("Prep Time").font(.headline))
+                    Section(header: Text("Cook and Prep Time").font(.headline))
                     {
-                        TextField("Prep Time", text: $prepTime).keyboardType(.numberPad)
-                    }
-                    
-                    Section(header: Text("Cook Time").font(.headline))
-                    {
-                        TextField("Cook Time", text: $cookTime).keyboardType(.numberPad)
+                        HStack{
+                            TextField("Prep Time", text: $prepTime).keyboardType(.numberPad)
+                            Button("Done"){UIApplication.shared.endEditing()}
+                        }
+                        
+                        HStack{
+                            TextField("Cook Time", text: $cookTime).keyboardType(.numberPad)
+                            Button("Done"){UIApplication.shared.endEditing()}
+                        }
+                        
                     }
                     
                     Section(header: Text("Servings").font(.headline))
                     {
-                        TextField("Cook Time", text: $servings).keyboardType(.numberPad)
+                        HStack{
+                            TextField("Servings", text: $servings)
+                                .keyboardType(.numberPad)
+                            Button("Done"){UIApplication.shared.endEditing()}
+                        }
+                        
                     }
                     
                 }
@@ -75,8 +92,13 @@ struct CreateARecipeView: View {
             prepTime.isEmpty ? CreateARecipeView.DefaultPrepTime : recipeDescription,
             cookTime.isEmpty ? CreateARecipeView.DefaultCookTime : recipeDescription,
             servings.isEmpty ? CreateARecipeView.DefaultServing : recipeDescription
-             )
-         }
+        )
     }
-
-
+    
+    
+}
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

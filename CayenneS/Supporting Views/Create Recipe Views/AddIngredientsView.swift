@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct AddIngredientsView: View {
-    var ingredients: Int
-    var includeInstructions: Bool
+    var ingredients: Int = 0
     @State var ingredientList: [String] = []
     
     var body: some View {
@@ -27,6 +26,6 @@ struct AddIngredientsView: View {
 
 struct AddIngredientsView_Previews: PreviewProvider {
     static var previews: some View {
-        AddIngredientsView(ingredients: 0, includeInstructions: false)
+        AddIngredientsView()
     }
 }

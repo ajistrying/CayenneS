@@ -17,7 +17,9 @@ struct RecipeListView: View {
         NavigationView{
             List {
                 ForEach(recipes,id: \.recipeName){ recipe in
-                    Text(recipe.recipeName)
+                    NavigationLink(destination: Text("Detail for \(recipe.recipeName)")){
+                        Text(recipe.recipeName)
+                    }
                 }
             }
             .sheet(isPresented: $isPresented){
