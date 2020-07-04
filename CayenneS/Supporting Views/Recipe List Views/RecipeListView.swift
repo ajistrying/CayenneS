@@ -17,10 +17,10 @@ struct RecipeListView: View {
         NavigationView{
             List {
                 ForEach(recipes,id: \.recipeName){ recipe in
-                    NavigationLink(destination: Text("Detail for \(recipe.recipeName)")){
+                    NavigationLink(destination: RecipeDetail(recipe: recipe)){
                         Text(recipe.recipeName)
                     }
-                }
+                }.onDelete(perform: deleteRecipe(at:))
             }
             .sheet(isPresented: $isPresented){
                 CreateARecipeView { recipeName, recipeDescription, prepTime, cookTime, servings in
@@ -30,10 +30,18 @@ struct RecipeListView: View {
             }
             .navigationBarTitle(Text("Recipes"))
             .navigationBarItems(trailing:
+                
+                
                 Button(action: {self.isPresented.toggle()}, label: {
+                    Text("Add a recipe").foregroundColor(.blue)
                     Image(systemName: "plus")
-                }))
+                })
+            )
         }
+    }
+    
+    func deleteRecipe(at offsets: IndexSet){
+        recipes.remove(atOffsets: offsets)
     }
     
     func addRecipe(recipeName: String, recipeDescription: String, prepTime: String, cookTime: String, servings: String)

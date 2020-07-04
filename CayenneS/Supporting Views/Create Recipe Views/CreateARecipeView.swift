@@ -31,7 +31,7 @@ struct CreateARecipeView: View {
                     {
                         HStack{
                             TextField("Name of recipe", text: $recipeName)
-                            Button("Done"){UIApplication.shared.endEditing()}
+                            Button("Done"){self.hideKeyboard()}
                         }
                         
                     }
@@ -41,7 +41,7 @@ struct CreateARecipeView: View {
                         
                         HStack{
                             TextField("Short recipe description", text: $recipeDescription)
-                            Button("Done"){UIApplication.shared.endEditing()}
+                            Button("Done"){self.hideKeyboard()}
                         }
                     }
                     
@@ -49,12 +49,12 @@ struct CreateARecipeView: View {
                     {
                         HStack{
                             TextField("Prep Time", text: $prepTime).keyboardType(.numberPad)
-                            Button("Done"){UIApplication.shared.endEditing()}
+                            Button("Done"){self.hideKeyboard()}
                         }
                         
                         HStack{
                             TextField("Cook Time", text: $cookTime).keyboardType(.numberPad)
-                            Button("Done"){UIApplication.shared.endEditing()}
+                            Button("Done"){self.hideKeyboard()}
                         }
                         
                     }
@@ -64,7 +64,7 @@ struct CreateARecipeView: View {
                         HStack{
                             TextField("Servings", text: $servings)
                                 .keyboardType(.numberPad)
-                            Button("Done"){UIApplication.shared.endEditing()}
+                            Button("Done"){self.hideKeyboard()}
                         }
                         
                     }
@@ -97,8 +97,8 @@ struct CreateARecipeView: View {
     
     
 }
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+extension View {
+    func hideKeyboard() {
+           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+       }
 }

@@ -22,6 +22,7 @@
 		A320021C24AFBA63009971CE /* Cookbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A320021B24AFBA63009971CE /* Cookbook.swift */; };
 		A320021E24AFBA70009971CE /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A320021D24AFBA70009971CE /* Ingredient.swift */; };
 		A320022224B05470009971CE /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A320022124B05470009971CE /* IngredientRow.swift */; };
+		A320022424B0D274009971CE /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A320022324B0D274009971CE /* RecipeDetail.swift */; };
 		A334C42F24AED6FF00AB2813 /* AddIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334C42E24AED6FF00AB2813 /* AddIngredientsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		A320021B24AFBA63009971CE /* Cookbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cookbook.swift; sourceTree = "<group>"; };
 		A320021D24AFBA70009971CE /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A320022124B05470009971CE /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
+		A320022324B0D274009971CE /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		A334C42E24AED6FF00AB2813 /* AddIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A308E2BD24A7E70C0014DAC5 /* RecipeListView.swift */,
+				A320022324B0D274009971CE /* RecipeDetail.swift */,
 			);
 			path = "Recipe List Views";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				A320022224B05470009971CE /* IngredientRow.swift in Sources */,
 				A334C42F24AED6FF00AB2813 /* AddIngredientsView.swift in Sources */,
 				A308E2BE24A7E70C0014DAC5 /* RecipeListView.swift in Sources */,
+				A320022424B0D274009971CE /* RecipeDetail.swift in Sources */,
 				A320021C24AFBA63009971CE /* Cookbook.swift in Sources */,
 				A320021E24AFBA70009971CE /* Ingredient.swift in Sources */,
 				A308E2C524A81B4A0014DAC5 /* CreateRecipeInstructionsView.swift in Sources */,
