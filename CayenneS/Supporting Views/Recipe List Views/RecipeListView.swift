@@ -18,7 +18,7 @@ struct RecipeListView: View {
             List {
                 ForEach(recipes,id: \.recipeName){ recipe in
                     NavigationLink(destination: RecipeDetail(recipe: recipe)){
-                        Text(recipe.recipeName)
+                        RecipeRow(recipe: recipe)
                     }
                 }.onDelete(perform: deleteRecipe(at:))
             }
@@ -54,20 +54,20 @@ struct RecipeListView: View {
         let cereal = Recipe(
             recipeName: "Cereal",
             recipeDescription: "Cinnamon Toast Crunch",
-            prepTime: "5",
-            cookTime: "0",
+            prepTime: "15",
+            cookTime: "10",
             servings: "1")
         let oatmeal = Recipe(
             recipeName: "Oatmeal",
             recipeDescription: "Cinnamon and Apples Oatmeal",
-            prepTime: "5",
-            cookTime: "0",
+            prepTime: "15",
+            cookTime: "10",
             servings: "1")
         let pbandj = Recipe(
             recipeName: "PB & J",
             recipeDescription: "Peanut Butter and Jelly Sandwich",
-            prepTime: "5",
-            cookTime: "0",
+            prepTime: "15",
+            cookTime: "10",
             servings: "1")
         
         return [cereal,oatmeal,pbandj]

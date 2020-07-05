@@ -9,13 +9,24 @@
 import SwiftUI
 
 struct RecipeRow: View {
+    var recipe: Recipe
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text(recipe.recipeName).font(.headline)
+            HStack {
+                Text("Cook Time: \(recipe.cookTime) ").font(.subheadline)
+                Text("Prep Time: \(recipe.prepTime) ").font(.subheadline)
+                Text("Servings: \(recipe.servings) ").font(.subheadline)
+            }
+            
+        }
+    
     }
 }
 
-struct IngredientCell_Previews: PreviewProvider {
+struct RecipeRow_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeRow().previewLayout(.fixed(width: 300, height: 70))
+        RecipeRow(recipe: Recipe(recipeName: "Oatmeal", recipeDescription: "Nice smooth cinnamon apple oatmeal!", prepTime: "10", cookTime: "15", servings: "3")).previewLayout(.fixed(width: 300, height: 100))
     }
 }
