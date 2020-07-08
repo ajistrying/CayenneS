@@ -30,10 +30,8 @@ struct RecipeListView: View {
             }
             .navigationBarTitle(Text("Recipes"))
             .navigationBarItems(trailing:
-                
-                
                 Button(action: {self.isPresented.toggle()}, label: {
-                    Text("Add a recipe").foregroundColor(.blue)
+                    Text("Add Recipe").foregroundColor(.blue)
                     Image(systemName: "plus")
                 })
             )

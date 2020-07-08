@@ -22,14 +22,23 @@ struct RecipeDetail: View {
             
             VStack {
                 
-                Text(recipe.recipeName).font(.largeTitle)
-                Text(recipe.recipeDescription).font(.headline).multilineTextAlignment(.center)
+                Text(recipe.recipeName).font(.title)
                 
                 HStack{
                     Text("Prep Time: \(recipe.prepTime)")
                     Text("Cook Time: \(recipe.cookTime)")
                     Text("Servings: \(recipe.servings)")
                 }
+                
+                HStack{
+                    Spacer()
+                    Button(action:{}){Text("Nutrition").font(.title)}
+                    Spacer()
+                    Button(action:{}){Text("Directions").font(.title)}
+                    Spacer()
+                }
+                
+                
             }
             Divider()
             VStack{
@@ -37,20 +46,17 @@ struct RecipeDetail: View {
                     List{
                         ForEach(ingredients,id: \.ingredientItem){ ingredient in
                             HStack {
-                                Text(String(ingredient.measureAmount))
-                                Text(String(ingredient.measurement))
-                                Text(ingredient.ingredientItem)
+                                IngredientRow(ingredient: ingredient)
                             }
                         }
                     }
-                    
-                    
                 }
                 Button(action:{})
                 {
                     Text("Add Ingredient")
                     Image(systemName: "plus")
                 }
+                Spacer()
             }
             Spacer()
             
@@ -74,10 +80,6 @@ struct RecipeDetail_Previews: PreviewProvider {
             RecipeDetail(recipe: Recipe(recipeName: "Example", recipeDescription: "Example Description", prepTime: "10", cookTime: "10", servings: "1"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
-            
-            RecipeDetail(recipe: Recipe(recipeName: "Example", recipeDescription: "Example Description", prepTime: "10", cookTime: "10", servings: "1"))
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
-                .previewDisplayName("iPhone 11 Pro")
         }
         
         

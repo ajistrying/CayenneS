@@ -9,13 +9,23 @@
 import SwiftUI
 
 struct IngredientRow: View {
+    var ingredient: Ingredient
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            
+            Text(String(ingredient.measureAmount))
+            Text(ingredient.measurement)
+            Text(ingredient.ingredientItem).multilineTextAlignment(.leading)
+            Spacer()
+            
+        }
     }
 }
 
 struct IngredientRow_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientRow()
+        IngredientRow(ingredient: Ingredient(ingredientItem: "Cinnamon Apple Oatmeal", measureAmount: 2, measurement: "Cups"))
+            .previewLayout(.fixed(width: 415, height: 50))
     }
 }
