@@ -12,7 +12,8 @@ import SwiftUI
 struct RecipeDetail: View {
     
     var recipe: Recipe
-    @State var ingredients: [Ingredient] = RecipeDetail.makeIngredients()
+    @State var ingredients = RecipeDetail.makeIngredients()
+    @State var addIngredientSheetIsPresented = false
     var body: some View {
         VStack {
             Image("pizza-placeholder")
@@ -38,20 +39,24 @@ struct RecipeDetail: View {
                     Spacer()
                 }
                 
-                
             }
             Divider()
             VStack{
                 VStack(alignment: .leading){
-                    List{
+                    List {
                         ForEach(ingredients,id: \.ingredientItem){ ingredient in
                             HStack {
                                 IngredientRow(ingredient: ingredient)
                             }
                         }
+                    }.sheet(isPresented: $addIngredientSheetIsPresented) { AddIngredientView { ingredientItem, measurmentAmount, measurement in
+                        self.addIngredient(ingredientItem: ingredientItem, measurementAmount: measurmentAmount, measurement: measurement)
+                        self.addIngredientSheetIsPresented = false
+                        }
                     }
+                    
                 }
-                Button(action:{})
+                Button(action:{self.addIngredientSheetIsPresented.toggle()})
                 {
                     Text("Add Ingredient")
                     Image(systemName: "plus")
@@ -59,16 +64,20 @@ struct RecipeDetail: View {
                 Spacer()
             }
             Spacer()
-            
-            
         }
         .navigationBarTitle(Text(recipe.recipeName), displayMode: .inline)
     }
     
+    
+    func addIngredient(ingredientItem: String,measurementAmount: String,measurement:String){
+        let newIngredient = Ingredient(ingredientItem: ingredientItem, measureAmount: measurementAmount, measurement: measurement)
+        self.ingredients.append(newIngredient)
+    }
+    
     static func makeIngredients() -> [Ingredient]{
-        let milk = Ingredient(ingredientItem: "Milk", measureAmount: 1, measurement: "Cup")
-        let oatmeal = Ingredient(ingredientItem: "Cinnamon Apple Oatmeal", measureAmount: 1, measurement: "Packet")
-        let peanutButter = Ingredient(ingredientItem: "Peanut Butter", measureAmount: 1, measurement: "Tablespoon")
+        let milk = Ingredient(ingredientItem: "Milk", measureAmount: "1", measurement: "Cup")
+        let oatmeal = Ingredient(ingredientItem: "Cinnamon Apple Oatmeal", measureAmount: "1", measurement: "Packet")
+        let peanutButter = Ingredient(ingredientItem: "Peanut Butter", measureAmount: "1", measurement: "Tablespoon")
         
         return [milk, oatmeal, peanutButter]
     }
@@ -81,8 +90,5 @@ struct RecipeDetail_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
         }
-        
-        
     }
-    
 }

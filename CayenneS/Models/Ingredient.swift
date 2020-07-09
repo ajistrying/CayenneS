@@ -10,6 +10,6 @@ import Foundation
 
 struct Ingredient {
     let ingredientItem: String
-    let measureAmount: Int
+    let measureAmount: String
     let measurement: String
 }

@@ -15,13 +15,11 @@ struct RecipeRow: View {
         VStack(alignment: .leading) {
             Text(recipe.recipeName).font(.headline)
             HStack {
-                Text("Cook Time: \(recipe.cookTime) ").font(.subheadline)
-                Text("Prep Time: \(recipe.prepTime) ").font(.subheadline)
-                Text("Servings: \(recipe.servings) ").font(.subheadline)
-            }
-            
+                Text("Cook Time: \(recipe.cookTime)")
+                Text("Prep Time: \(recipe.prepTime)")
+                Text("Servings: \(recipe.servings)")
+            }.font(.subheadline)
         }
-    
     }
 }
 
