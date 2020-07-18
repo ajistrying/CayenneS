@@ -13,12 +13,11 @@ struct IngredientRow: View {
     
     var body: some View {
         HStack{
-            
+            Spacer()
             Text(String(ingredient.measureAmount))
             Text(ingredient.measurement)
-            Text(ingredient.ingredientItem).multilineTextAlignment(.leading)
+            Text(ingredient.ingredientItem)
             Spacer()
-            
         }
     }
 }

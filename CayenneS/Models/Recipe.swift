@@ -15,5 +15,6 @@ struct Recipe {
     let cookTime: String
     let servings: String
     let ingredients: [Ingredient] = []
+    let directions: [Direction] = []
     
 }

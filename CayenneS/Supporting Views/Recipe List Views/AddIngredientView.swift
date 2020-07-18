@@ -28,10 +28,18 @@ struct AddIngredientView: View {
             VStack {
                 Form {
                     Section(header: Text("Ingredient")){
-                        TextField("Ingredient Name", text: $ingredientItem)
+                        HStack{
+                            TextField("Ingredient Name", text: $ingredientItem)
+                            Button("Done"){self.hideKeyboard()}
+                        }
+                        
                     }
                     Section(header:Text("Measurement")){
-                        TextField("Measurement Amount",text: $measurementAmount).keyboardType(.numberPad)
+                        HStack{
+                            TextField("Measurement Amount",text: $measurementAmount).keyboardType(.numberPad)
+                            Button("Done"){self.hideKeyboard()}
+                        }
+                        
                         Picker(selection: $selectedMeasurementIndex, label: Text("Measurement")) {
                             ForEach(0..<measurements.count) {
                                 Text(self.measurements[$0].capitalized)
@@ -49,4 +57,6 @@ struct AddIngredientView: View {
         }
         
     }
+    
 }
+

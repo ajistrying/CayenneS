@@ -18,8 +18,7 @@ struct RecipeDetail: View {
         VStack {
             Image("pizza-placeholder")
                 .resizable()
-                .frame(width: 400, height: 325)
-                .cornerRadius(100)
+                .frame(width: 400, height: 300)
             
             VStack {
                 
@@ -30,15 +29,22 @@ struct RecipeDetail: View {
                     Text("Cook Time: \(recipe.cookTime)")
                     Text("Servings: \(recipe.servings)")
                 }
-                
+                Divider()
                 HStack{
                     Spacer()
-                    Button(action:{}){Text("Nutrition").font(.title)}
+                    NavigationLink(destination: Text("Nutrition")){
+                        Text("Nutrition").font(.body)
+                    }
                     Spacer()
-                    Button(action:{}){Text("Directions").font(.title)}
+                    NavigationLink(destination: RecipeDirectionsView()){
+                        Text("Directions").font(.body)
+                    }
+                    Spacer()
+                    NavigationLink(destination: Text("Notes")){
+                        Text("Notes").font(.body)
+                    }
                     Spacer()
                 }
-                
             }
             Divider()
             VStack{
@@ -66,7 +72,9 @@ struct RecipeDetail: View {
             Spacer()
         }
         .navigationBarTitle(Text(recipe.recipeName), displayMode: .inline)
+        
     }
+    
     
     
     func addIngredient(ingredientItem: String,measurementAmount: String,measurement:String){
@@ -81,6 +89,7 @@ struct RecipeDetail: View {
         
         return [milk, oatmeal, peanutButter]
     }
+    
 }
 
 struct RecipeDetail_Previews: PreviewProvider {
