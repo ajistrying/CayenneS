@@ -16,9 +16,11 @@ struct RecipeDetail: View {
     @State var addIngredientSheetIsPresented = false
     var body: some View {
         VStack {
+            Spacer()
             Image("pizza-placeholder")
                 .resizable()
-                .frame(width: 400, height: 300)
+                .frame(width: 200, height: 200)
+                .cornerRadius(100)
             
             VStack {
                 
@@ -50,7 +52,7 @@ struct RecipeDetail: View {
             VStack{
                 VStack(alignment: .leading){
                     List {
-                        ForEach(ingredients,id: \.ingredientItem){ ingredient in
+                        ForEach(ingredients, id:\.ingredientItem){ ingredient in
                             HStack {
                                 IngredientRow(ingredient: ingredient)
                             }

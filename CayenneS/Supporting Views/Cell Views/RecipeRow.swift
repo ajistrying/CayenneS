@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RecipeRow: View {
-    var recipe: Recipe
+    var recipe: Recipe!
     
     var body: some View {
         VStack(alignment: .leading) {

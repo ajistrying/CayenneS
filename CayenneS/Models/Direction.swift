@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Direction {
+struct Direction{
     let directionText: String
     let ingredientsIncluded: [Ingredient]?
 }

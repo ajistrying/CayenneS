@@ -13,11 +13,15 @@ struct RecipeDirectionsView: View {
     @State var recipeDirections = RecipeDirectionsView.makeDirections()
     
     var body: some View {
-        Text("Directions")
+        List {
+            ForEach(recipeDirections, id: \.directionText) { recipeDirection in
+                DirectionRow(direction: recipeDirection)
+            }
+        }
     }
     
    static func makeDirections() -> [Direction]{
-        let direction1 = Direction(directionText: "Add 1 cup of oatmeal to a bowl", ingredientsIncluded: [Ingredient(ingredientItem: "Cinnamon Oatmeal", measureAmount: "1", measurement: "Cup")])
+        let direction1 = Direction(directionText: "Some other ingredient that needs to be added in a certain way whooppee this a very long direction text to format", ingredientsIncluded: [Ingredient(ingredientItem: "Cinnamon Oatmeal", measureAmount: "1", measurement: "Cup")])
         let direction2 = Direction(directionText: "Some other ingredient that needs to be added in a certain way whooppee this a very long direction text to format", ingredientsIncluded: [Ingredient(ingredientItem: "Water", measureAmount: "6", measurement: "Tablespoon")])
         let direction3 = Direction(directionText: "Some other ingredient that needs to be added in a certain way whooppee this a very long direction text to format", ingredientsIncluded: [Ingredient(ingredientItem: "Water", measureAmount: "6", measurement: "Tablespoon")])
         return [direction1, direction2, direction3]
